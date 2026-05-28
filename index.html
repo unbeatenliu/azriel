@@ -10,34 +10,56 @@
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
             padding: 20px;
             line-height: 1.6;
             color: #2c3e50;
             background-color: #fafafa;
         }
+        /* 封面与简介的左右两列布局 */
+        .hero {
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+            margin-bottom: 30px;
+            flex-wrap: wrap; /* 手机等窄屏幕自动换行 */
+        }
+        .cover {
+            flex: 0 0 200px; /* 固定封面宽度，可调 */
+            text-align: center;
+        }
+        .cover img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        .intro {
+            flex: 1;
+            background: #f3ede8;
+            padding: 18px;
+            border-radius: 8px;
+            border-left: 4px solid #c9aa8f;
+            font-size: 0.95em;
+            line-height: 1.7;
+        }
+        /* 标题和作者样式 */
         h1 {
-    text-align: center;
-    border-bottom: 2px solid #e0c3b0;
-    padding-bottom: 10px;
-    color: #5d3a2e;
-    font-family: "Zhi Mang Xing", "华文行书", "华文行楷", "KaiTi", cursive;
-    font-size: 3em;
-}
+            text-align: center;
+            border-bottom: 2px solid #e0c3b0;
+            padding-bottom: 10px;
+            color: #5d3a2e;
+            font-family: "Zhi Mang Xing", "华文行书", "华文行楷", "KaiTi", cursive;
+            font-size: 3em;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
         .author {
             text-align: center;
             color: #8e6b5a;
             margin-bottom: 30px;
             font-style: italic;
-        }
-        .intro {
-            background: #f3ede8;
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 30px;
-            font-size: 0.95em;
-            border-left: 4px solid #c9aa8f;
         }
         .chapter-list {
             list-style: none;
@@ -74,21 +96,38 @@
             border-top: 1px solid #e0d6ce;
             padding-top: 20px;
         }
+        /* 手机等窄屏幕时，封面和简介堆叠 */
+        @media (max-width: 600px) {
+            .hero {
+                flex-direction: column;
+                align-items: center;
+            }
+            .cover {
+                flex: 0 0 auto;
+                margin-bottom: 15px;
+            }
+            .intro {
+                width: 100%;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="cover-wrapper" style="text-align: center; margin-bottom: 20px;">
-    <img src="images/bym.png" alt="《病与梦》封面" 
-         style="max-width: 100%; height: auto; width: 280px; border-radius: 4px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
-</div>
+    <!-- 左右并排：封面 + 简介 -->
+    <div class="hero">
+        <div class="cover">
+            <img src="images/bym.png" alt="《病与梦》封面">
+        </div>
+        <div class="intro">
+            《病与梦》是一部以清末民初为背景的长篇通俗小说，兼具古典意境与现代心理深度。这是一部关于爱的祛魅之作——它不提供廉价的救赎，而是冷静呈现人性中最幽暗、最矛盾的部分，追问“情为何物”这一永恒谜题。全书如同一场大梦，醒来时只剩雪落无声，余味绵长。故事围绕乡绅刘白展开，他出身商贾之家，才情不俗，重情重义，广交四方友人。在一个飘雪的冬日生辰宴上，他邀集众友，品西洋美食，吟诗作对，看似热闹风流。然而，一场意外的劫囚事件将他与官府推向对立，由此引发保路运动、江湖厮杀、官绅倾轧等一系列风波。作品以“病”与“梦”为核心意象，将个人心理悲剧与时代挽歌交织。作者善用“雪”“蝉”“白”等意象营造苍凉氛围，语言文白相生，既有古典诗词的典雅，又有现代心理描写的直击人心。人物塑造复杂立体，没有绝对的善恶：刘白的慷慨与占有同源，徐茹的克制与善良一体，官僚西君殉国前流露悲壮，侠客仇志于刀光中承载旧义。
+        </div>
+    </div>
+
+    <!-- 标题、作者、目录等放在下方 -->
     <h1>病与梦</h1>
     <div class="author">作者：azriel</div>
     
-    <div class="intro">
-        《病与梦》是一部以清末民初为背景的长篇通俗小说，兼具古典意境与现代心理深度。这是一部关于爱的祛魅之作——它不提供廉价的救赎，而是冷静呈现人性中最幽暗、最矛盾的部分，追问“情为何物”这一永恒谜题。全书如同一场大梦，醒来时只剩雪落无声，余味绵长。故事围绕乡绅刘白展开，他出身商贾之家，才情不俗，重情重义，广交四方友人。在一个飘雪的冬日生辰宴上，他邀集众友，品西洋美食，吟诗作对，看似热闹风流。然而，一场意外的劫囚事件将他与官府推向对立，由此引发保路运动、江湖厮杀、官绅倾轧等一系列风波。作品以“病”与“梦”为核心意象，将个人心理悲剧与时代挽歌交织。作者善用“雪”“蝉”“白”等意象营造苍凉氛围，语言文白相生，既有古典诗词的典雅，又有现代心理描写的直击人心。人物塑造复杂立体，没有绝对的善恶：刘白的慷慨与占有同源，徐茹的克制与善良一体，官僚西君殉国前流露悲壮，侠客仇志于刀光中承载旧义。
-    </div>
-    
-    <h2> 章节目录</h2>
+    <h2>章节目录</h2>
     <ul class="chapter-list">
         <li><a href="chapter-01.html">第1章 宴亲朋刘白庆诞辰 救旧友义士陷图图</a></li>
         <li><a href="chapter-02.html">第2章 设巧计内应劫囚车 破埋伏群雄脱虎口</a></li>
@@ -104,7 +143,7 @@
     </ul>
     
     <footer>
-        <p>© azriel | 爱是构成世界的第一物质| 
+        <p>© azriel | 爱是构成世界的第一物质</p>
     </footer>
 </body>
 </html>
